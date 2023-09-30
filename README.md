@@ -1,35 +1,33 @@
 # Learn the basics about Kafka streaming pipelines 🚀
 
 </br>
-<p align="center"><img src="./project_architecture.png" width=70% height=70%></p>
+<p align="center"><img src="./project_architecture.png" width=100% height=100%></p>
 </br>
 
 This project is a robust and scalable **streaming data pipeline** that seamlessly integrates data from 2 diverse sources - an external API and a FlaskAPI. The pipeline leverages the power of **Apache Kafka**, utilizing a cluster with 2 brokers and 1 Zookeeper manager, to create a highly efficient and fault-tolerant data transportation system.
 </br>
 
 🌐 **Sources**:
-* External API: We fetch real-time data from an external API, ensuring that we are always up-to-date with the latest information.
-* FlaskAPI: Our custom FlaskAPI provides an interface for real-time user interactions, enriching the data stream with user-generated content.
-</br>
+* External API : fetching real-time football data from the https://www.football-data.org/ API
+* FlaskAPI : a custom FlaskAPI that provides an interface for real-time user interactions, enriching the data stream with user-generated content.
 
-🔗 **Kafka Cluster**:
-Our Kafka cluster consists of *2 brokers*, working in harmony thanks to *Zookeeper* to ensure data continuity and reliability. This robust architecture guarantees that data is never lost and is efficiently distributed to consumers.
+🔗 **Kafka Cluster**: consists of *2 brokers*, working in harmony thanks to *Zookeeper* to ensure data continuity and reliability. This robust architecture guarantees that data is never lost and is efficiently distributed to consumers.
 </br>
 
 🎯 **Topics**:
-Two distinct Kafka topics are created (somedata and footdata), each corresponding to a specific data source. These topics serve as the central channels through which data flows in our pipeline.
+Two distinct Kafka topics are created (somedata and footdata), each corresponding to a specific data source. These topics serve as the central channels through which data flows in the pipeline.
 </br>
 
 🧩 **Producers**:
-To populate these topics, we have 2 dedicated producers. One continuously queries the external API, while the other responds to user requests through our FlaskAPI. These producers are the heart of our real-time data ingestion process.
+Two dedicated producers to populate these topics. One continuously queries the external API, while the other responds to user requests through the FlaskAPI. These producers are the heart of the real-time data ingestion process.
 </br>
 
 🔍 **Consumer**:
-Our consumer subscribes to both Kafka topics, adeptly handling the incoming data streams. It meticulously processes and filters the data before depositing it into a MongoDB database. This final destination ensures that valuable insights can be extracted and analyzed.
+One consumer that subscribes to both Kafka topics, adeptly handling the incoming data streams. It meticulously processes and filters the data before depositing it into a MongoDB database. This final destination ensures that valuable insights can be extracted and analyzed.
 </br>
 
 📈 **Scalability and Performance**:
-Our pipeline is designed for scalability, making it suitable for handling vast amounts of data. The Kafka cluster's distributed architecture allows us to effortlessly scale to meet growing demands while maintaining high performance.
+The pipeline is designed for scalability, making it suitable for handling vast amounts of data. The Kafka cluster's distributed architecture allows to effortlessly scale to meet growing demands while maintaining high performance.
 </br>
 
 ## Table of Contents
