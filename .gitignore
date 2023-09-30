@@ -1,0 +1,10 @@
+env
+project_notes.ipynb
+kafka
+kafka_2.13-3.5.1
+producer/docker-compose.yaml
+consumer/consumer_api.py
+kafka_2.13-3.5.1.tgz
+kafka_admin.py
+consumer/docker-compose.yaml
+consumer/.env

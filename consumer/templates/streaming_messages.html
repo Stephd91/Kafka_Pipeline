@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Kafka Messages</title>
+</head>
+
+<body>
+    <h1>Messages from Kafka Topic: {{ topic }}</h1>
+    <img src="{{ url_for('static', filename='img/search.gif') }}" alt="gif" height="10%">
+    <div id="messages"></div>
+
+    <script>
+        const eventSource = new EventSource("/streaming/{{ topic }}");
+
+        eventSource.onmessage = function (event) {
+            const messagesDiv = document.getElementById("messages");
+            messagesDiv.innerHTML += "<p>" + event.data + "</p>";
+        };
+    </script>
+</body>
+
+</html>

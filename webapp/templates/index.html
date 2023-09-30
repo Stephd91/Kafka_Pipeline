@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Data</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Football Data</h1>
+        <div class="text-center mb-4">
+            <img src="{{ url_for('static', filename='img/soccer-ball-svgrepo-com.svg') }}" alt="ball" height="8%"
+                width="8%" class="center" style="margin-bottom: 10px;">
+            <div class="table-responsive table table-striped table-bordered table-sm table-dark table-hover">
+                <table>
+                    {{ table|safe }}
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
