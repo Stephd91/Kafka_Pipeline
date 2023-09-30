@@ -1,7 +1,7 @@
 # Learn the basics about Kafka streaming pipelines 🚀
 
 </br>
-<p align="center"><img src="./project_architecture.drawio.png" width=70% height=70%></p>
+<p align="center"><img src="./project_architecture.png" width=70% height=70%></p>
 </br>
 
 This project is a robust and scalable **streaming data pipeline** that seamlessly integrates data from 2 diverse sources - an external API and a FlaskAPI. The pipeline leverages the power of **Apache Kafka**, utilizing a cluster with 2 brokers and 1 Zookeeper manager, to create a highly efficient and fault-tolerant data transportation system.
