@@ -32,7 +32,7 @@ def create_kafka_producer():
 
 
 # ************* SOMEDATA producer *************
-def generate_somedata_path(url) -> dict:
+def generate_somedata_path(url: str) -> str:
     """
     Generate random data from a list to pass in the somedata API path
     """
@@ -42,7 +42,7 @@ def generate_somedata_path(url) -> dict:
     return f"{url}/{message}?number={number}"
 
 
-def get_somedata_data(url) -> dict:
+def get_somedata_data(url: str) -> dict:
     """
     Get JSON results from API call to /somedata path
     """
@@ -55,6 +55,12 @@ def get_somedata_data(url) -> dict:
     )
     kafka_somedata = response.json()
     return kafka_somedata
+
+
+def on_send_success(record_metadata):
+    print("topic :", record_metadata.topic)
+    print("partition : ", record_metadata.partition)
+    print("offset :", record_metadata.offset)
 
 
 def producer_somedata_start_streaming(**kwargs):
@@ -74,7 +80,10 @@ def producer_somedata_start_streaming(**kwargs):
             break
         try:
             somedata_data = get_somedata_data(url)
-            producer.send(topic, value=somedata_data)
+            future = producer.send(topic, value=somedata_data)
+            # log messages :
+            record_metadata = future.get(timeout=10)
+            on_send_success(record_metadata)
             print(f"{somedata_data} successfully sent to Kafka {topic}")
         finally:
             producer.flush()

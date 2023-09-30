@@ -24,7 +24,7 @@ def send_message(data: str):
     Args: number = defines how many line of the same string it returns
     """
     number = request.args.get("number", type=int, default=1)
-    message = [{i: data} for i in range(number)]
+    message = {i: data for i in range(number)}
     return jsonify(message)
 
 

@@ -9,3 +9,4 @@ kafka_admin.py
 consumer/docker-compose.yaml
 consumer/.env
 project_architecture.drawio.png
+project_architecture.drawio

@@ -19,7 +19,7 @@ def create_kafka_consumer():
             v.decode("utf-8")
         ),  # deserialize data from JSON to Python object to str
         "auto_offset_reset": "earliest",  # Start reading from the beginning
-        "group_id": "my_consumer_group",  # Set your consumer group ID
+        "group_id": "my_consumer_group",  # With a Consumer Group, the consumer will regularly commit (save) its position to Kafka
         "enable_auto_commit": False,  # Disable automatic commits
     }
     # Create a Kafka consumer object
@@ -68,6 +68,11 @@ def read_batch_message(topic: str):
     return messages
 
 
+# Debugging stuff 🚧
+# a = read_batch_message("somedata")
+# print(a)
+
+
 def get_mongo_database(dbname: str):
     # mongodb configuration
     # URI = 'mongodb://root:root@mongo:27017/'
@@ -91,6 +96,7 @@ def consumer_monogdb(dbname: str, topic: str):
     collection = db[topic]
     # Read messages
     documents_to_send = read_batch_message(topic)
+    print(documents_to_send)
     if topic not in db.list_collection_names():
         collection = db.create_collection(topic)
     collection.insert_many(documents_to_send)
@@ -99,5 +105,10 @@ def consumer_monogdb(dbname: str, topic: str):
     )
 
 
+# Debugging stuff 🚧
+# b = consumer_monogdb("mydb", "somedata")
+# print(b)
+
 if __name__ == "__main__":
     consumer_monogdb("mydb", "footdata")
+    # consumer_monogdb("mydb", "somedata")

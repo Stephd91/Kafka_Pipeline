@@ -6,6 +6,7 @@ from airflow.utils.dates import days_ago
 
 # https://stackoverflow.com/questions/20309456/how-do-i-call-a-function-from-another-py-file
 from producer import producer_somedata, producer_footdata
+from consumer import consumer
 
 # 1) Define the DAG arguments :
 default_args = {
@@ -47,9 +48,7 @@ start_footdata_producer = PythonOperator(
 )
 
 # Task 4 : start consumer
-start_consumer = PythonOperator(
-    task_id="consumer", python_callable=consumer_api, dag=dag
-)
+start_consumer = PythonOperator(task_id="consumer", python_callable=consumer, dag=dag)
 
 
 [start_somedata_producer, start_footdata_producer] >> start_consumer
